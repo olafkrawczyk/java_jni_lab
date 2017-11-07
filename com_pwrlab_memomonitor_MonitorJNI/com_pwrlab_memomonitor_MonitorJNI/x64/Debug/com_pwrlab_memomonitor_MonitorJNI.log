@@ -1,0 +1,6 @@
+﻿  com_pwrlab_memomonitor_MonitorJNI.cpp
+c:\users\olaf\documents\visual studio 2015\projects\com_pwrlab_memomonitor_monitorjni\com_pwrlab_memomonitor_monitorjni\com_pwrlab_memomonitor_monitorjni.cpp(18): warning C4244: 'return': conversion from 'SIZE_T' to 'jint', possible loss of data
+c:\users\olaf\documents\visual studio 2015\projects\com_pwrlab_memomonitor_monitorjni\com_pwrlab_memomonitor_monitorjni\com_pwrlab_memomonitor_monitorjni.cpp(26): warning C4244: 'return': conversion from 'SIZE_T' to 'jint', possible loss of data
+     Creating library C:\Users\Olaf\documents\visual studio 2015\Projects\com_pwrlab_memomonitor_MonitorJNI\x64\Debug\com_pwrlab_memomonitor_MonitorJNI.lib and object C:\Users\Olaf\documents\visual studio 2015\Projects\com_pwrlab_memomonitor_MonitorJNI\x64\Debug\com_pwrlab_memomonitor_MonitorJNI.exp
+  com_pwrlab_memomonitor_MonitorJNI.vcxproj -> C:\Users\Olaf\documents\visual studio 2015\Projects\com_pwrlab_memomonitor_MonitorJNI\x64\Debug\com_pwrlab_memomonitor_MonitorJNI.dll
+  com_pwrlab_memomonitor_MonitorJNI.vcxproj -> C:\Users\Olaf\documents\visual studio 2015\Projects\com_pwrlab_memomonitor_MonitorJNI\x64\Debug\com_pwrlab_memomonitor_MonitorJNI.pdb (Full PDB)
