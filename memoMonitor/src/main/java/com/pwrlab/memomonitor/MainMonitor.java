@@ -14,8 +14,13 @@ public class MainMonitor extends javax.swing.JFrame {
     /**
      * Creates new form MainMonitor
      */
+    private int totalRAM;
+    private int freeRAM;
+    
     public MainMonitor() {
         initComponents();
+        this.totalRAM = 0;
+        this.freeRAM = 0;
     }
 
     /**
@@ -59,20 +64,18 @@ public class MainMonitor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(29, 29, 29)
-                        .addComponent(jTextField1))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                            .addComponent(jTextField1)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,9 +102,20 @@ public class MainMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        refreshMonitor();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    private void refreshMonitor() {
+        this.totalRAM = MonitorJNI.getTotalRamMBNative();
+        this.freeRAM = MonitorJNI.getUsedRamMBNative();
+        int precentage = 100 - (int)((freeRAM/(double)totalRAM)*100);
+        
+        System.out.println(precentage);
+        
+        this.jTextField1.setText(Integer.toString(totalRAM));
+        this.jTextField2.setText(Integer.toString(freeRAM));
+        this.jProgressBar1.setValue(precentage);
+    }
     /**
      * @param args the command line arguments
      */
