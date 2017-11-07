@@ -5,6 +5,8 @@
  */
 package com.pwrlab.memomonitor;
 
+import javax.swing.Timer;
+
 /**
  *
  * @author Olaf
@@ -21,6 +23,11 @@ public class MainMonitor extends javax.swing.JFrame {
         initComponents();
         this.totalRAM = 0;
         this.freeRAM = 0;
+        
+        refreshMonitor();
+        new Timer(5000, (e) -> {
+            refreshMonitor();
+        }).start();
     }
 
     /**
@@ -109,9 +116,7 @@ public class MainMonitor extends javax.swing.JFrame {
         this.totalRAM = MonitorJNI.getTotalRamMBNative();
         this.freeRAM = MonitorJNI.getUsedRamMBNative();
         int precentage = 100 - (int)((freeRAM/(double)totalRAM)*100);
-        
-        System.out.println(precentage);
-        
+
         this.jTextField1.setText(Integer.toString(totalRAM));
         this.jTextField2.setText(Integer.toString(freeRAM));
         this.jProgressBar1.setValue(precentage);
